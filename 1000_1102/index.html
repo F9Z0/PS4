@@ -19,6 +19,46 @@
        Visual only — exploit logic remains unchanged.
        ========================================================= */
 
+    html,
+    body {
+      background: #050505 !important;
+    }
+
+    /* إصلاح صورة الخلفية:
+       الصفحة داخل 1000_1102
+       والصورة موجودة في جذر المشروع */
+    body::before {
+      content: "" !important;
+      position: fixed !important;
+      inset: 0 !important;
+      background-image: url("../background.jpg") !important;
+      background-size: cover !important;
+      background-position: center center !important;
+      background-repeat: no-repeat !important;
+      opacity: .72 !important;
+      filter: brightness(.55) contrast(1.05) !important;
+      z-index: 0 !important;
+      pointer-events: none !important;
+    }
+
+    body::after {
+      content: "" !important;
+      position: fixed !important;
+      inset: 0 !important;
+      background: linear-gradient(
+        180deg,
+        rgba(0,0,0,.22),
+        rgba(0,0,0,.68)
+      ) !important;
+      z-index: 0 !important;
+      pointer-events: none !important;
+    }
+
+    body > * {
+      position: relative;
+      z-index: 1;
+    }
+
     body {
       text-align: center;
     }
