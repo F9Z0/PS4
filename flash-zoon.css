@@ -1,8 +1,11 @@
-/* FLASH ZOON — one shared visual identity layer for every page.
-   Visual-only. Core exploit JavaScript / payload files are untouched. */
+
+/* =========================================================
+   FLASH ZOON — New Store Identity
+   Visual-only layer. Core exploit scripts/logic are unchanged.
+   ========================================================= */
 :root{
   --fz-bg:#050505;
-  --fz-panel:rgba(10,10,10,.94);
+  --fz-panel:rgba(9,9,9,.92);
   --fz-orange:#ff7a00;
   --fz-orange-soft:#ff9d35;
   --fz-text:#f5f5f5;
@@ -10,38 +13,51 @@
   --fz-line:rgba(255,122,0,.42);
   --fz-shadow:rgba(255,122,0,.18);
 }
-*{box-sizing:border-box}
-html,body{margin:0;min-height:100%;background:var(--fz-bg)!important;color:var(--fz-text)!important;font-family:"Segoe UI",Tahoma,Arial,sans-serif}
-body{position:relative;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0;background-image:url('/background.jpg')!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important;opacity:.78;filter:brightness(.56) contrast(1.06);z-index:0;pointer-events:none}
-body::after{content:"";position:fixed;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.14),rgba(0,0,0,.48) 80%,rgba(0,0,0,.62));z-index:0;pointer-events:none}
-body>*{position:relative;z-index:1}
-#wrap,#container,.container,.main-layout{max-width:980px;width:min(94vw,980px);margin:0 auto;padding:18px 18px 28px;background:transparent!important}
-#header,#main-header,.header-section,.brand{position:relative;overflow:hidden}
-#header,#main-header{background:linear-gradient(180deg,rgba(18,18,18,.96),rgba(8,8,8,.96))!important;border:1px solid var(--fz-line)!important;border-radius:22px!important;padding:26px 22px 22px!important;margin:0 auto 18px!important;text-align:center;box-shadow:0 16px 38px rgba(0,0,0,.5),0 0 24px var(--fz-shadow)!important}
-#header::before,#main-header::before{content:"";position:absolute;top:0;left:9%;right:9%;height:2px;background:var(--fz-orange);box-shadow:0 0 12px rgba(255,122,0,.65)}
-#header h1,#main-header h1,.main-title,h1{font-size:clamp(42px,7vw,72px)!important;line-height:1!important;font-weight:900!important;color:#fff!important;-webkit-text-fill-color:#fff!important;background:none!important;margin:0 0 10px!important;letter-spacing:-1px!important;text-shadow:0 0 18px rgba(255,122,0,.16)!important;animation:none!important}
-#header .english-name,#brand b,.brand{font-size:clamp(18px,3vw,28px)!important;letter-spacing:5px!important;font-weight:800!important;color:var(--fz-orange)!important;margin:0 0 12px!important;text-shadow:none!important}
-#header .sub,#main-header .sub,.sub{font-size:18px!important;line-height:1.35!important;color:#d8d8d8!important;font-weight:600!important;text-shadow:none!important}
-#header .sub span,#main-header .sub span{color:#fff!important}
-.neon-line,.line{height:1px!important;width:58%!important;margin:18px auto!important;background:linear-gradient(90deg,transparent,var(--fz-orange),transparent)!important;box-shadow:0 0 10px rgba(255,122,0,.42)!important}
-#header .phone,.phones{font-size:16px!important;line-height:1.4!important;color:#eee!important;direction:ltr;letter-spacing:1px!important;margin:6px 0 0!important;text-shadow:none!important}
-#header .phone{display:inline-block;padding:7px 14px!important;border:1px solid rgba(255,122,0,.35)!important;border-radius:999px!important;background:rgba(255,122,0,.06)!important;box-shadow:none!important}
-#header .phone::after{content:"GAME ZONE  •  PS4";display:block;color:var(--fz-orange);font-size:12px;letter-spacing:2px;margin-top:6px}
-#state,#status,.card,#det,#details,#cache,#console,.main-layout,.btn-container,#kernel-options,.autoJb{background:linear-gradient(180deg,rgba(17,17,17,.96),rgba(8,8,8,.96))!important;border:1px solid rgba(255,122,0,.28)!important;box-shadow:0 12px 30px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.04)!important;border-radius:16px!important;color:#fff!important}
-#state,#status{font-size:20px!important;font-weight:800!important;padding:14px 16px!important;text-align:center!important;text-shadow:none!important}
-#det,#details,#cache{font-size:14px!important;color:#bdbdbd!important;padding:10px 12px!important;margin-top:8px!important}
-#det b{color:#fff!important}
-#cache.cacheok{color:#79d9a6!important;border-color:rgba(80,200,130,.2)!important}
-.loader,.loader-dot,.loader-dots span,.loading span{box-shadow:0 0 10px rgba(255,122,0,.45)!important}
-.loader{border-top-color:var(--fz-orange)!important;border-right-color:var(--fz-orange-soft)!important}
-.loader-dot,.loader-dots span,.loading span{background:var(--fz-orange)!important}
-.loader.done{border-color:#5bd493!important;box-shadow:0 0 12px rgba(91,212,147,.5)!important}
-.loading{margin-top:18px!important;height:5px!important;background:#222!important;border-radius:5px!important;overflow:hidden!important}
-button,label,.btn-container label{color:#fff!important}
-button{background:#151515!important;border:1px solid rgba(255,122,0,.45)!important;border-radius:10px!important;padding:10px 16px!important}
-input[type=radio]:checked+label,input[type=checkbox]:checked+label{color:var(--fz-orange)!important}
-.footer,.footer-brand{color:#666!important;text-shadow:none!important}
-#result,#user-agent{display:none}
-pre#console{white-space:pre-wrap!important;min-height:120px;padding:14px!important;overflow:auto!important;font:13px/1.5 Consolas,"Courier New",monospace!important}
-@media (max-width:640px){#wrap,#container,.container,.main-layout{width:96vw;padding:12px 10px 20px!important}#header,#main-header{padding:22px 14px 20px!important;border-radius:18px!important}#header h1,#main-header h1,h1{font-size:40px!important}.phones,#header .phone{font-size:13px!important}.sub{font-size:16px!important}}
+html,body{background:var(--fz-bg)!important;color:var(--fz-text)!important;}
+body::before{background-image:url('preview.png')!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important;opacity:.9!important;filter:brightness(.62) contrast(1.08)!important;z-index:0!important;}
+body::after{
+  background:
+    radial-gradient(circle at 50% 30%,rgba(255,122,0,.08),transparent 46%),
+    linear-gradient(180deg,rgba(0,0,0,.14) 0%,rgba(0,0,0,.42) 78%,rgba(0,0,0,.58) 100%)!important;
+  z-index:0!important;
+}
+#container,#wrap{max-width:980px!important;width:min(94vw,980px)!important;margin:0 auto!important;padding:24px 20px 30px!important;}
+#container{background:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-radius:0!important;}
+#header,#main-header{
+  position:relative!important;overflow:hidden!important;
+  padding:28px 22px 24px!important;margin-bottom:18px!important;
+  background:linear-gradient(180deg,rgba(18,18,18,.96),rgba(8,8,8,.96))!important;
+  border:1px solid var(--fz-line)!important;border-radius:22px!important;
+  box-shadow:0 18px 40px rgba(0,0,0,.5),0 0 26px var(--fz-shadow),inset 0 1px 0 rgba(255,255,255,.05)!important;
+}
+#header::before{content:""!important;position:absolute!important;top:0!important;left:8%!important;right:8%!important;height:2px!important;background:var(--fz-orange)!important;box-shadow:0 0 12px rgba(255,122,0,.75)!important;opacity:1!important;}
+#header h1,#main-header h1{
+  font-size:clamp(44px,7vw,72px)!important;line-height:1!important;font-weight:900!important;
+  color:#fff!important;margin:0 0 9px!important;letter-spacing:-1px!important;
+  text-shadow:0 0 18px rgba(255,122,0,.18)!important;animation:none!important;
+}
+#header .english-name{font-size:clamp(18px,3vw,28px)!important;letter-spacing:5px!important;color:var(--fz-orange)!important;margin:0 0 14px!important;text-shadow:none!important;animation:none!important;}
+#header .sub,#main-header .sub{font-size:18px!important;color:#d8d8d8!important;letter-spacing:0!important;font-weight:600!important;margin:0!important;text-shadow:none!important;}
+#header .sub span,#main-header .sub span{color:#fff!important;font-weight:700!important;text-shadow:none!important;}
+.neon-line{width:58%!important;height:1px!important;margin:18px auto!important;background:linear-gradient(90deg,transparent,var(--fz-orange),transparent)!important;box-shadow:0 0 12px rgba(255,122,0,.45)!important;}
+#header .phone{font-size:0!important;padding:0!important;border:0!important;box-shadow:none!important;background:none!important;animation:none!important;}
+#header .phone::after{content:"GAME ZONE  •  PS4";display:inline-block;font-size:14px;letter-spacing:2px;color:var(--fz-orange);padding:7px 14px;border:1px solid rgba(255,122,0,.45);border-radius:999px;background:rgba(255,122,0,.07);text-shadow:none;}
+.card,#state{
+  background:linear-gradient(180deg,rgba(17,17,17,.96),rgba(8,8,8,.96))!important;
+  border:1px solid rgba(255,122,0,.28)!important;
+  box-shadow:0 14px 36px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.04)!important;
+  backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+}
+#state{font-size:21px!important;color:#fff!important;text-shadow:none!important;border-radius:16px!important;padding:14px 16px!important;}
+#state.done{border-color:rgba(92,214,145,.38)!important;}
+#state.error{border-color:rgba(242,139,130,.38)!important;}
+#det{background:rgba(255,255,255,.025)!important;border-color:rgba(255,255,255,.07)!important;color:#bdbdbd!important;}
+#det b,.chip{color:#fff!important;background:rgba(255,122,0,.08)!important;border-color:rgba(255,122,0,.25)!important;box-shadow:none!important;text-shadow:none!important;}
+#cache{background:rgba(255,255,255,.025)!important;border-color:rgba(255,255,255,.07)!important;color:#888!important;text-shadow:none!important;}
+#cache.cacheok{color:#79d9a6!important;background:rgba(80,200,130,.06)!important;border-color:rgba(80,200,130,.2)!important;}
+.loader,.loader-dot,.loader-dots span{box-shadow:0 0 10px rgba(255,122,0,.45)!important;}
+.loader{border-top-color:var(--fz-orange)!important;border-right-color:var(--fz-orange-soft)!important;}
+.loader-dot,.loader-dots span{background:var(--fz-orange)!important;}
+.loader.done{border-color:#5bd493!important;box-shadow:0 0 12px rgba(91,212,147,.5)!important;}
+.footer,.footer-brand{color:#666!important;text-shadow:none!important;}
+@media (max-width:640px){#container,#wrap{padding:14px 12px 20px!important;}#header,#main-header{padding:22px 15px 20px!important;border-radius:18px!important;}#header .english-name{letter-spacing:3px!important;}#header .phone::after{font-size:12px!important;}#state{font-size:18px!important;}}
