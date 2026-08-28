@@ -1,124 +1,419 @@
-<!DOCTYPE html> 
-<html lang="en" manifest="CSSFontFace.manifest"> 
-<head> 
-  <meta charset="UTF-8"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <title>محمد خالد للشروحات </title> 
-  <link rel="stylesheet" href="includes/style.css"> 
+<!DOCTYPE html>
+<html lang="ar" manifest="CSSFontFace.manifest">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>FLASH ZOON — PS4 10.00–11.02</title>
+
+  <!-- Shared FLASH ZOON identity -->
+  <link rel="stylesheet" href="../flash-zoon.css">
+
+  <!-- Original page stylesheet -->
+  <link rel="stylesheet" href="includes/style.css">
 
   <style>
-    /* الصورة المضافة */
-    .exploit-image {
-      display: block;
-      width: 180px;
-      height: 180px;
-      object-fit: contain;
-      margin: 20px auto 5px auto;
+    /* =========================================================
+       FLASH ZOON — PAGE IDENTITY OVERRIDES
+       Visual only — exploit logic remains unchanged.
+       ========================================================= */
+
+    body {
+      text-align: center;
     }
 
-    /* تنسيق الكتابة مع الصورة */
-    h1 {
-      text-align: center;
-      margin-top: 5px;
+    .brand-title {
+      margin: 24px auto 8px;
+      font-size: clamp(44px, 7vw, 72px);
+      line-height: 1;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -1px;
+      text-shadow: 0 0 18px rgba(255, 122, 0, .18);
     }
 
-    #UA {
-      text-align: center;
+    .brand-name {
+      margin: 0 0 10px;
+      font-size: clamp(18px, 3vw, 28px);
+      font-weight: 800;
+      letter-spacing: 5px;
+      color: #ff7a00;
+      text-transform: uppercase;
+    }
+
+    .brand-sub {
+      margin: 0 0 8px;
+      color: #d8d8d8;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .brand-fw {
+      margin: 0;
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    .phones {
+      margin: 12px 0 0;
+      color: #eee;
+      font-size: 15px;
+      letter-spacing: 1px;
+      direction: ltr;
+    }
+
+    .brand-line {
+      width: 58%;
+      height: 1px;
+      margin: 18px auto 22px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        #ff7a00,
+        transparent
+      );
+      box-shadow: 0 0 10px rgba(255, 122, 0, .42);
+    }
+
+    .fz-status {
+      margin: 0 auto 16px;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .fz-label {
+      color: #ff7a00;
+      font-weight: 800;
+    }
+
+    .fz-footer {
+      margin-top: 18px;
+      color: #666;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 640px) {
+      .brand-title {
+        font-size: 40px;
+      }
+
+      .brand-name {
+        letter-spacing: 3px;
+      }
+
+      .phones {
+        font-size: 13px;
+      }
     }
   </style>
-</head> 
-<body> 
+</head>
 
-  <!-- ضع صورتك باسم image.png بجانب ملف HTML -->
-  <img class="exploit-image" src="image.png" alt="">
+<body>
 
-  <h1>محمد خالد للشروحات</h1> 
-  <h3 id="UA">Running on:</h3> 
- 
-  <hr> 
- 
-  <div class="btn-container"> 
-    <form id="kernel-options"> 
-      <input type="radio" name="kernel" id="netctrl-exploit" value="netctrl"> 
-      <label for="netctrl-exploit">NetCtrl</label> 
-      <input type="radio" name="kernel" id="lapse-exploit" value="lapse"> 
-      <label for="lapse-exploit">Lapse</label> 
-    </form> 
-    <button id="jeilbrek">Jailbreak</button> 
-    <div class="autoJb"> 
-      <label for="autoJbInput" id="autoJbLabel">Auto Jailbreak</label> 
-      <input class="mt-2" id="autoJbInput" type="checkbox"> 
-    </div> 
-  </div> 
- 
-  <div class="main-layout"> 
-    <pre id="console">Caching offline files... 0%</pre> 
-  </div> 
+  <div id="wrap">
 
-<script> 
-    var scriptsLoaded = false; 
- 
-    function triggerScripts() { 
-      if (scriptsLoaded) return; 
-      scriptsLoaded = true; 
- 
-      var consoleLog = document.getElementById('console'); 
-      if (consoleLog) consoleLog.innerText += "\nLoading main.js & script.js..."; 
- 
-      var s1 = document.createElement('script'); 
-      s1.src = 'src/main.js'; 
-      s1.onerror = function() { 
-        if (consoleLog) consoleLog.innerText += "\n❌ Error: Gagal memuat src/main.js (Cek path/file)"; 
-      }; 
-       
-      s1.onload = function() { 
-        var s2 = document.createElement('script'); 
-        s2.src = 'includes/script.js'; 
-        s2.onerror = function() { 
-          if (consoleLog) consoleLog.innerText += "\n❌ Error: Gagal memuat includes/script.js (Cek path/file)"; 
-        }; 
-        document.body.appendChild(s2); 
-      }; 
- 
-      document.body.appendChild(s1); 
-    } 
- 
-    if (window.applicationCache) { 
-      var appCache = window.applicationCache; 
-      var consoleLog = document.getElementById('console'); 
- 
-      appCache.addEventListener('progress', function(e) { 
-        if (e.lengthComputable && consoleLog) { 
-          var percent = Math.round((e.loaded / e.total) * 100); 
-          consoleLog.innerText = "Caching offline files... " + percent + "%"; 
-        } 
-      }, false); 
- 
-      appCache.addEventListener('cached', function() { 
-        if (consoleLog) consoleLog.innerText = "Offline cache complete (100%)!"; 
-        triggerScripts(); 
-      }, false); 
- 
-      appCache.addEventListener('noupdate', function() { 
-        if (consoleLog) consoleLog.innerText = "Offline cache ready."; 
-        triggerScripts(); 
-      }, false); 
- 
-      appCache.addEventListener('error', function() { 
-        if (consoleLog) consoleLog.innerText = "Cache error/offline mode."; 
-        triggerScripts(); 
-      }, false); 
- 
-      setTimeout(function() { 
-        if (!scriptsLoaded) { 
-          if (consoleLog) consoleLog.innerText += "\n[Timeout] ..."; 
-          triggerScripts(); 
-        } 
-      }, 3000); 
- 
-    } else { 
-      triggerScripts(); 
-    } 
-</script> 
-</body> 
+    <!-- FLASH ZOON HEADER -->
+    <div id="header">
+
+      <div class="brand-title">
+        فلاش زون
+      </div>
+
+      <div class="brand-name">
+        FLASH ZOON
+      </div>
+
+      <div class="brand-sub">
+        قسم الألعاب — PS4
+      </div>
+
+      <div class="brand-fw">
+        Firmware 10.00 — 11.02
+      </div>
+
+      <div class="phones">
+        +9647877885582 &nbsp; • &nbsp; +9647802383692
+      </div>
+
+      <div class="brand-line"></div>
+
+      <div class="fz-status">
+        <span class="fz-label">FLASH ZOON</span>
+        <br>
+        PS4 Exploit Host
+      </div>
+
+    </div>
+
+
+    <!-- ORIGINAL CONTROLS -->
+    <div class="btn-container">
+
+      <form id="kernel-options">
+
+        <input
+          type="radio"
+          name="kernel"
+          id="netctrl-exploit"
+          value="netctrl"
+        >
+
+        <label for="netctrl-exploit">
+          NetCtrl
+        </label>
+
+
+        <input
+          type="radio"
+          name="kernel"
+          id="lapse-exploit"
+          value="lapse"
+        >
+
+        <label for="lapse-exploit">
+          Lapse
+        </label>
+
+      </form>
+
+
+      <button id="jeilbrek">
+        Jailbreak
+      </button>
+
+
+      <div class="autoJb">
+
+        <label for="autoJbInput" id="autoJbLabel">
+          Auto Jailbreak
+        </label>
+
+        <input
+          class="mt-2"
+          id="autoJbInput"
+          type="checkbox"
+        >
+
+      </div>
+
+    </div>
+
+
+    <!-- ORIGINAL CONSOLE -->
+    <div class="main-layout">
+
+      <pre id="console">
+Caching offline files... 0%
+      </pre>
+
+    </div>
+
+
+    <div class="fz-footer">
+      FLASH ZOON • GAME ZONE
+    </div>
+
+  </div>
+
+
+<script>
+
+var scriptsLoaded = false;
+
+
+/* =========================================================
+   ORIGINAL SCRIPT LOADER
+   ========================================================= */
+
+function triggerScripts() {
+
+  if (scriptsLoaded) return;
+
+  scriptsLoaded = true;
+
+  var consoleLog =
+    document.getElementById('console');
+
+  if (consoleLog) {
+    consoleLog.innerText +=
+      "\nLoading main.js & script.js...";
+  }
+
+
+  var s1 =
+    document.createElement('script');
+
+  s1.src =
+    'src/main.js';
+
+
+  s1.onerror = function() {
+
+    if (consoleLog) {
+
+      consoleLog.innerText +=
+        "\n❌ Error: Failed to load src/main.js";
+
+    }
+
+  };
+
+
+  s1.onload = function() {
+
+    var s2 =
+      document.createElement('script');
+
+    s2.src =
+      'includes/script.js';
+
+
+    s2.onerror = function() {
+
+      if (consoleLog) {
+
+        consoleLog.innerText +=
+          "\n❌ Error: Failed to load includes/script.js";
+
+      }
+
+    };
+
+
+    document.body.appendChild(s2);
+
+  };
+
+
+  document.body.appendChild(s1);
+
+}
+
+
+/* =========================================================
+   ORIGINAL APPLICATION CACHE HANDLING
+   ========================================================= */
+
+if (window.applicationCache) {
+
+  var appCache =
+    window.applicationCache;
+
+  var consoleLog =
+    document.getElementById('console');
+
+
+  appCache.addEventListener(
+    'progress',
+    function(e) {
+
+      if (
+        e.lengthComputable &&
+        consoleLog
+      ) {
+
+        var percent =
+          Math.round(
+            (e.loaded / e.total) * 100
+          );
+
+        consoleLog.innerText =
+          "Caching offline files... " +
+          percent +
+          "%";
+
+      }
+
+    },
+    false
+  );
+
+
+  appCache.addEventListener(
+    'cached',
+    function() {
+
+      if (consoleLog) {
+
+        consoleLog.innerText =
+          "Offline cache complete (100%)!";
+
+      }
+
+      triggerScripts();
+
+    },
+    false
+  );
+
+
+  appCache.addEventListener(
+    'noupdate',
+    function() {
+
+      if (consoleLog) {
+
+        consoleLog.innerText =
+          "Offline cache ready.";
+
+      }
+
+      triggerScripts();
+
+    },
+    false
+  );
+
+
+  appCache.addEventListener(
+    'error',
+    function() {
+
+      if (consoleLog) {
+
+        consoleLog.innerText =
+          "Cache error/offline mode.";
+
+      }
+
+      triggerScripts();
+
+    },
+    false
+  );
+
+
+  setTimeout(
+    function() {
+
+      if (!scriptsLoaded) {
+
+        if (consoleLog) {
+
+          consoleLog.innerText +=
+            "\n[Timeout] Starting scripts...";
+
+        }
+
+        triggerScripts();
+
+      }
+
+    },
+    3000
+  );
+
+
+} else {
+
+  triggerScripts();
+
+}
+
+</script>
+
+</body>
 </html>
